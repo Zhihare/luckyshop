@@ -13,7 +13,7 @@ export const Header: React.FC<IAppProps> = ({ className }) => {
             <Container className='flex items-center justify-between py-8'>
                 <div>
                     <Image
-                        src='/src/img/man.png'
+                        src='/man.png'
                         alt='Logo'
                         width={40}
                         height={40}
