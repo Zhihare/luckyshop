@@ -11,8 +11,8 @@ export interface IAppProps {
 
 export const Header: React.FC<IAppProps> = ({ className }) => {
     return (
-        <header className={cn('border border-b',className)}>
-            <Container className='flex items-center justify-between py-8'>
+        <header className={cn('',className)}>
+            <Container className='flex items-center justify-between py-1'>
                 <div className='flex items-center gap-4'>
                     <Image
                         src='/man.png'

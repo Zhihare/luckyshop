@@ -1,34 +1,40 @@
+"use client"
 import { cn } from '@/lib/utils';
-import React from 'react';
+import React, { useState } from 'react';
+import { CategoriesItem } from './categoriesItem';
+import { DropdownMenu } from './dropdown-menu';
 
 interface Props {
   className?: string;
 }
 
-const categ = ["Новинки", "Чоловікам", "Жінкам", "Дітям", "SALE"];
 const activeIndex = 0;
 
 export const Categories: React.FC<Props> = ({ className }) => {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
   return (
-    <div className={cn('inline-flex flex-wrap gap-1 bg-gray-50 p-1 rounded-2xl')}>
-      {categ.map((cat, index) => (
-        <a
-          key={index} // Переносим key на элемент <a>
-          className={cn(
-            'flex items-center font-bold h-11 rounded-2xl px-5',
-            activeIndex === index && 'bg-white shadow-md shadow-gray-200 text-primary'
-          )}
-          href="#"
-        >
-          <button
-            className={cn(className, {
-              // Дополнительные стили для кнопки можно добавить здесь
-            })}
+    <div className={cn('flex flex-wrap gap-1 bg-gray-50 p-3 pb-0 rounded-2xl')}>
+      {/* Основные категории */}
+      <ul className="flex flex-wrap space-x-2">
+        {CategoriesItem.map((category, index) => (
+          <li
+            key={category.name}
+            onMouseEnter={() => setActiveCategory(category.name)}
+            onMouseLeave={() => setActiveCategory(null)}
+            className="cursor-pointer pb-3"
           >
-            {cat}
-          </button>
-        </a>
-      ))}
+            <a className={cn('flex items-center font-bold h-11 rounded-2xl px-4',
+                       activeIndex === index && 'bg-white shadow-md shadow-gray-200 text-primary'
+                  )}>{category.name}</a>
+
+            {/* Подкатегории, которые появляются при ховере */}
+            {activeCategory === category.name && (
+              <DropdownMenu subcategory={category.subcategories}/>
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
