@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {Unbounded, Roboto_Mono} from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/shared/header";
+import { Footer } from "@/components/shared";
 
 const geistSans = Unbounded({
   subsets: ['cyrillic'],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           <Header className="" />
           {children}
+          <Footer/>
         </main>
         
       </body>

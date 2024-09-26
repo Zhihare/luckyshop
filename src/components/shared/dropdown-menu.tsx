@@ -14,7 +14,7 @@ interface Props {
 
 export const DropdownMenu: React.FC<Props> = ({ className, subcategory }) => {
   return (
-    <div className="absolute top-[90%] left-0 w-full bg-white shadow-lg p-2 grid grid-cols-4 gap-2">
+    <div className="absolute top-[90%] left-0 w-full bg-white shadow-lg p-2 grid grid-cols-4 gap-2 z-10">
                 {subcategory.map((subcategory) => (
                   <div key={subcategory.title}>
                     <h4 className="font-bold">{subcategory.title}</h4>

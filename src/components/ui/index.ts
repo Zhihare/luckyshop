@@ -1,4 +1,5 @@
 export { Button } from "./button";
+import { SearchBar } from './search-bar';
 export { Checkbox } from "./checkbox";
 export { Dialog } from "./dialog";
 export { Drawer } from "./drawer";
@@ -12,3 +13,4 @@ export { Skeleton } from "./skeleton";
 export { Slider } from "./slider";
 export { Switch } from "./switch";
  export {ScrollArea } from "./scroll-bar";
+ export {SearchBar} from "./search-bar";
