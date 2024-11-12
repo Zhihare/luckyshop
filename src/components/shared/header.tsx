@@ -4,6 +4,9 @@ import { Container } from './container';
 import  Image  from 'next/image';
 import { Button, SearchBar } from '../ui';
 import { ArrowRight, ShoppingCart, User, Heart } from 'lucide-react';
+import Link from 'next/link';
+import { TopBar } from './top-bar';
+
 
 export interface IAppProps {
     className: string;
@@ -13,6 +16,7 @@ export const Header: React.FC<IAppProps> = ({ className }) => {
     return (
         <header className={cn('sticky top-0 bg-white pt-2 shadow-lg shadow-black/5 z-10',className)}>
             <Container className='flex flex-wrap items-center justify-between py-1'>
+                <Link href={'/'}>
                 <div className='flex items-center gap-1'>
                     <Image
                         src='/man.png'
@@ -24,7 +28,9 @@ export const Header: React.FC<IAppProps> = ({ className }) => {
                           {/* Приховуємо h1 на екранах до 640px і показуємо на більших */}
                         <h1 className='hidden sm:block text-1xl uppercase font-black w-[260px]'>Man_lucky_shop</h1>
                    
-                </div>
+                    </div>
+                </Link>
+                 <TopBar />
                 
                     
                 <div className="flex flex-wrap items-center gap-3">

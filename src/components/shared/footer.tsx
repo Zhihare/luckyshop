@@ -57,6 +57,9 @@ export const Footer: React.FC<Props> = ({ className }) => {
                       </Link>
              <Link href="/contacts" className={cn("mb-2 text-sm hover:underline", isActive("/contacts") && "underline")}>
               Контакти
+                      </Link>
+              <Link href="/vidguki" className={cn("mb-2 text-sm hover:underline", isActive("/vidguki") && "underline")}>
+              Відгуки
             </Link>
          
           </div>
