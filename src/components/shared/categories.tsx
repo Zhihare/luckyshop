@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { cn } from '@/lib/utils';
 import React, { useState } from 'react';
 import { CategoriesItem } from './categoriesItem';
@@ -14,25 +14,29 @@ export const Categories: React.FC<Props> = ({ className }) => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
-    <div className={cn('flex flex-wrap gap-1 bg-gray-50 p-3 pb-0 rounded-2xl')}>
-      {/* Основные категории */}
-      <ul className="flex flex-wrap space-x-2">
-        {CategoriesItem.map((category, index) => (
+    <div className={cn(' bg-gray-50 p-3 rounded-2xl shadow-sm')}>
+      {/* Список категорій */}
+      <ul className="flex space-x-6 border-b">
+        {CategoriesItem.map((category) => (
           <li
             key={category.name}
             onMouseEnter={() => setActiveCategory(category.name)}
             onMouseLeave={() => setActiveCategory(null)}
-            className="cursor-pointer pb-3"
+            className=" a cursor-pointer"
           >
-            <a className={cn('flex items-center font-bold h-11 rounded-2xl px-4',
-                       activeIndex === index && 'bg-white shadow-md shadow-gray-200 text-primary'
-                  )}>{category.name}</a>
+            <a className={cn(
+              "block pb-3 font-bold text-gray-700 hover:text-blue-500 transition-colors",
+              activeCategory === category.name && "text-blue-600 border-b-2 border-blue-600"
+            )}>
+              {category.name}
+            </a>
 
-            {/* Подкатегории, которые появляются при ховере */}
+            {/* Підкатегорії */}
             {activeCategory === category.name && (
-              <DropdownMenu subcategory={category.subcategories}/>
+              <DropdownMenu subcategory={category.subcategories} />
             )}
           </li>
+          
         ))}
       </ul>
     </div>

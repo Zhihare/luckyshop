@@ -10,3 +10,4 @@ export { Filters } from './filters';
 export {FilterCheckbox} from './filter-chexkbox';
 export { DropdownMenu } from './dropdown-menu';
 export { Footer } from './footer';
+export {BurgerMenu} from './burgerMenu';

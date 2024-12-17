@@ -1,65 +1,88 @@
-import { cn } from '@/lib/utils';
-import * as React from 'react';
-import { Container } from './container';
-import  Image  from 'next/image';
-import { Button, SearchBar } from '../ui';
-import { ArrowRight, ShoppingCart, User, Heart } from 'lucide-react';
-import Link from 'next/link';
-import { TopBar } from './top-bar';
+"use client";
 
+import { cn } from "@/lib/utils";
+import * as React from "react";
+import { Container } from "./container";
+import Image from "next/image";
+import { SearchBar } from "../ui";
+import { ShoppingCart, User, Heart } from "lucide-react";
+import Link from "next/link";
+import { BurgerMenu } from "./burgerMenu";
+import { TopBar } from "./top-bar";
 
 export interface IAppProps {
-    className: string;
+  className?: string;
 }
 
 export const Header: React.FC<IAppProps> = ({ className }) => {
-    return (
-        <header className={cn('sticky top-0 bg-white pt-2 shadow-lg shadow-black/5 z-10',className)}>
-            <Container className='flex flex-wrap items-center justify-between py-1'>
-                <Link href={'/'}>
-                <div className='flex items-center gap-1'>
-                    <Image
-                        src='/man.png'
-                        alt='Logo'
-                        width={70}
-                        height={70}
-                    />
-                    
-                          {/* Приховуємо h1 на екранах до 640px і показуємо на більших */}
-                        <h1 className='hidden sm:block text-1xl uppercase font-black w-[260px]'>Man_lucky_shop</h1>
-                   
-                    </div>
-                </Link>
-                 <TopBar />
-                
-                    
-                <div className="flex flex-wrap items-center gap-3">
-                    <div>
-                    <SearchBar/>
-                </div>
-                     
-                        <Button variant="outline" className="flex items-center gap-1">
-                             <User size={20} />
-                    </Button>
+  const [isScrollingUp, setIsScrollingUp] = React.useState(true);
 
-                    <Button variant="outline" className="flex items-center gap-1">
-                             <Heart size={20} />
-                    </Button>
-                   
-                    <div>
-                        <Button className='group relative px-3'>
-                            <div className='flex items-center gap-1 transition duration-300 group-hover:opacity-0'>
-                                <ShoppingCart className='h-4 w-4 relative' strokeWidth={2} />
-                                <b>1</b>
-                            </div>
-                              <ArrowRight
-          size={20}
-          className="absolute right-5 transition duration-300 -translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0"
-        />
-                        </Button>
-                    </div>
-                    </div>
-            </Container>
-      </header>
-    );
-  }
+  React.useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrollingUp(currentScrollY < lastScrollY || currentScrollY < 50);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 w-full bg-white shadow-md z-20",
+        className
+      )}
+    >
+      {/* Основний хедер (Логотип, пошук, іконки) */}
+      <Container className="flex items-center justify-between py-2 px-4">
+        {/* Логотип */}
+        <Link href="/">
+          <div className="flex items-center gap-2">
+            <BurgerMenu className="md:hidden" />
+            <Image src="/man.png" alt="Logo" width={50} height={50} className="hidden md:block" />
+            <span className="text-sm md:text-2xl ml-4 font-bold text-blue-600 uppercase">
+              Man Lucky Shop
+            </span>
+          </div>
+        </Link>
+
+        {/* Пошукова панель */}
+        <div className="hidden md:flex flex-1 justify-center mx-4">
+          <SearchBar placeholder="Пошук" />
+        </div>
+
+        {/* Іконки */}
+        <div className="flex items-center gap-4">
+          <Link href="/profile" className="text-blue-600">
+            <User size={24} />
+          </Link>
+          <Link href="/wishlist" className="text-blue-600">
+            <Heart size={24} />
+          </Link>
+          <Link href="/cart" className="relative text-blue-600">
+            <ShoppingCart size={24} />
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full px-1">
+              1
+            </span>
+          </Link>
+        </div>
+      </Container>
+
+      {/* Навігаційна панель з категоріями */}
+      <nav
+        className={cn(
+            "justify-center py-1 bg-white shadow-sm transition-all duration-300 ease-in-out",
+            isScrollingUp ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 invisible"
+        )}
+        style={{ position: "absolute", top: "100%", left: 0, width: "100%" }}
+        >
+        <TopBar className="hidden md:block" />
+        <SearchBar className="flex justify-center md:hidden" />
+    </nav>
+    </header>
+  );
+};

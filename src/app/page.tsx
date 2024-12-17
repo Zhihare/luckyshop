@@ -4,7 +4,7 @@ import { CategoryBlock } from "@/components/shared/categoryBlock"
 export default function Home() {
   return (
     <>
-      <Container className="mt-5">
+      <Container className="mt-24">
         <h2 className="text-2xl font-bold mb-4">Популярні категорії</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <CategoryBlock 
