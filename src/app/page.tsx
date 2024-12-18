@@ -1,5 +1,5 @@
-import { Container, Filters } from "@/components/shared"
-import { CategoryBlock } from "@/components/shared/categoryBlock"
+import { Container } from "@/components/shared"
+import { CategoryBlock } from "@/components/shared"
 
 export default function Home() {
   return (

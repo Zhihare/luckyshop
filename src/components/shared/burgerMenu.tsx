@@ -14,11 +14,9 @@ export const BurgerMenu: React.FC<Props> = ({className}) => {
     const mobileMenuRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        let lastScrollY = window.scrollY;
-
+       
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
-            lastScrollY = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll);

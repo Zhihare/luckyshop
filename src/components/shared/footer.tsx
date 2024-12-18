@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-export const Footer: React.FC<Props> = ({ className }) => {
+export const Footer: React.FC<Props> = ({ }) => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import {Unbounded, Roboto_Mono} from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/shared/header";
-import { Footer } from "@/components/shared";
+import { Footer, Header } from "@/components/shared";
 
 const geistSans = Unbounded({
   subsets: ['cyrillic'],

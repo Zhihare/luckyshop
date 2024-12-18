@@ -8,9 +8,8 @@ interface Props {
   className?: string;
 }
 
-const activeIndex = 0;
 
-export const Categories: React.FC<Props> = ({ className }) => {
+export const Categories: React.FC<Props> = ({  }) => {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   return (
