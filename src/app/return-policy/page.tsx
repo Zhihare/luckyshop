@@ -2,14 +2,12 @@ import { Container, Title } from '@/components/shared';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
-interface Props {
-className?: string;
-};
 
-const ReturnPolicy: React.FC<Props> = ({className}) => {
+
+export default function ReturnPolicy() {
   return (
     <Container>
-      <div className={cn('mt-10 mb-14',className)}>
+      <div className="mt-10 mb-14">
         <Title size="md" className='mb-5' text="Умови повернення товарів в інтернет-магазині Man_lucky_shop:" />
         <ul className="text-gray-500 text-sm space-y-5 ">
           <li className='mb-5'>Згідно з чинним законодавством України передбачають можливість повернення товару протягом 14 днів з моменту його отримання.</li>
@@ -32,5 +30,3 @@ const ReturnPolicy: React.FC<Props> = ({className}) => {
     </Container>
   );
 };
-
-export default ReturnPolicy;
