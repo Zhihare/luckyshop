@@ -7,8 +7,7 @@ import Image from "next/image";
 import { SearchBar } from "../ui";
 import { ShoppingCart, User, Heart } from "lucide-react";
 import Link from "next/link";
-import { BurgerMenu } from "./burgerMenu";
-import { TopBar } from "./top-bar";
+import { BurgerMenu, TopBar } from"./index";
 
 export interface IAppProps {
   className?: string;
