@@ -1,15 +1,14 @@
+"use client";
+
 import { Container } from '@/components/shared';
 import { cn } from '@/lib/utils';
-import React from 'react';
 
-const Vidguki = ({ className }: { className?: string }) => {
+export default function Vidguki() {
   return (
     <Container>
-      <div className={cn('mt-10 mb-14', className)}>
+      <div className={cn('mt-10 mb-14')}>
         Vidguki
       </div>
     </Container>
   );
-};
-
-export default Vidguki;
+}

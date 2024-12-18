@@ -1,15 +1,14 @@
+"use client";
+
 import { Container } from '@/components/shared';
 import { cn } from '@/lib/utils';
-import React from 'react';
 
-const Contacts = ({ className }: { className?: string }) => {
+export default function Contacts() {
   return (
     <Container>
-      <div className={cn('mt-10 mb-14', className)}>
+      <div className={cn('mt-10 mb-14')}>
         Contacts
       </div>
     </Container>
   );
-};
-
-export default Contacts;
+}
