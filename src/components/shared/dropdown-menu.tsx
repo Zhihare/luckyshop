@@ -12,7 +12,7 @@ interface Props {
   subcategory: Subcategory[];
 }
 
-export const DropdownMenu: React.FC<Props> = ({ className, subcategory }) => {
+export const DropdownMenu: React.FC<Props> = ({subcategory}) => {
   return (
     <div
       className={cn(

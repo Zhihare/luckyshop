@@ -16,7 +16,7 @@ export const BurgerMenu: React.FC<Props> = ({className}) => {
     React.useEffect(() => {
        
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+            
         };
 
         window.addEventListener('scroll', handleScroll);
